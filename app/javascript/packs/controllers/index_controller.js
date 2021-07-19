@@ -1,10 +1,15 @@
 import { Controller } from "stimulus";
 import geolocation from "geolocation";
+import loadGoogleMapsApi from "load-google-maps-api";
+import receiver from "../../../assets/covidAid/receiver.png";
+import donor from "../../../assets/covidAid/donor.png";
 
 export default class extends Controller {
+	static values = { long: Number, lang: String };
 	connect() {
-		console.log("Hello, Stimulus!", this.element);
-		console.log(geolocation);
+		console.log(this.longValue);
+		console.log(this.langValue);
+
 		geolocation.getCurrentPosition((err, location) => {
 			if (err) {
 				console.log(err);
@@ -12,14 +17,42 @@ export default class extends Controller {
 				this.initMap(location.coords.latitude, location.coords.longitude);
 			}
 		});
-		this.textV = document.getElementById("map");
-		this.textV.innerText = "hello from javascript";
+		geolocation.Watcher;
+		geolocation.addListener("change", () => {
+			geolocation.getCurrentPosition((err, location) => {
+				if (err) {
+					console.log(err);
+				} else {
+					this.initMap(location.coords.latitude, location.coords.longitude);
+				}
+			});
+		});
 	}
 	initMap(lat, log) {
-		console.log(lat);
-		this.map = new google.maps.Map(document.getElementById("map"), {
-			center: { lat: lat, log: log },
-			zoom: 8,
-		});
+		const textV = document.getElementById("map");
+		console.log(textV);
+
+		loadGoogleMapsApi({ key: process.env["google_api"] })
+			.then((googlemap) => {
+				const map = new googlemap.Map(document.getElementById("map"), {
+					center: {
+						lat: lat,
+						lng: log,
+					},
+					zoom: 12,
+				});
+				new googlemap.Marker({
+					position: {
+						lat: lat,
+						lng: log,
+					},
+					map: map,
+					title: "Receiver",
+					icon: receiver,
+				});
+			})
+			.catch((e) => {
+				console.log(e);
+			});
 	}
 }
