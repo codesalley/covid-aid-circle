@@ -1,6 +1,6 @@
-<div data-controller="index">
+<div data-controller="main" data-main-wrap-value="<%= @logData%>">
   <section>
-    <div id="map" data-long-value="<%= @logLan[0].to_s unless @logLan.nil?  %>" data-lang-value="<%= @logLan[1].to_s unless @logLan.nil?  %>">
+    <div id="map" >
     </div>
   </section>
 </div>
