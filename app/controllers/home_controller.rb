@@ -11,11 +11,14 @@ def index
                         lng:  results.first.coordinates[1], 
                         donor: user.donor,
                         user: user.username,
-                    } )
+                    } ) unless results.nil?
         end
     end
     
     
 end
+def user_profile
+end
+
 
 end

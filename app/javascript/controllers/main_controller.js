@@ -35,6 +35,8 @@ export default class extends Controller {
 	initMap(lat, log) {
 		loadGoogleMapsApi({ key: process.env["google_api"] })
 			.then((googlemap) => {
+				var directionsService = new google.maps.DirectionsService();
+				var directionsDisplay = new google.maps.DirectionsRenderer();
 				const map = new googlemap.Map(document.getElementById("map"), {
 					center: {
 						lat: lat,
@@ -42,6 +44,7 @@ export default class extends Controller {
 					},
 					zoom: 12,
 				});
+				directionsDisplay.setMap(map);
 				new googlemap.Marker({
 					position: {
 						lat: lat,
@@ -56,7 +59,7 @@ export default class extends Controller {
 						const user = JSON.parse(loc);
 						const userData = `<div> 
                               Donate to ${user.user}
-                              <button onclick="this.donate" class="btn btn-outline-primary"> Donate </button>
+                              <button id='donate' onclick="this.donate" class="btn donate-btn btn-outline-primary"> Donate </button>
                               <div>`;
 						const infowindow = new google.maps.InfoWindow({
 							content: userData,
@@ -77,6 +80,11 @@ export default class extends Controller {
 								anchor: marker,
 								map,
 								shouldFocus: false,
+							});
+							const donateBtn = document.querySelector(".donate-btn");
+							console.log(document.getElementById("donate"));
+							donateBtn.addListener("click", () => {
+								console.log("map");
 							});
 						});
 					});
