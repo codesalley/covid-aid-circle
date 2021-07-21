@@ -1,0 +1,11 @@
+<div>
+  <h3> Confirm Your Phone Number  </h3>
+  <%= form_with(url: welcome_path ) do |f| %>
+    <div class="">
+      <%= f.number_field(:confirmation_code,   {class:'form-conroll text-center', placeholder: 'X X X X', maxlength: 4 })    %>
+    </div>
+    <div class="mb-3">
+      <%= f.submit "Verify", disable_with: 'Verifying...' %>
+    </div>
+  <% end %>
+</div>
