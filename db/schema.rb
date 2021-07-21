@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_21_160941) do
+ActiveRecord::Schema.define(version: 2021_07_21_174329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2021_07_21_160941) do
     t.boolean "verified", default: false
     t.string "tmp_code"
     t.string "password_digest"
+    t.text "codinates", default: [], array: true
   end
 
 end

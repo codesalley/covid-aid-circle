@@ -9,6 +9,7 @@ export default class extends Controller {
 	static values = { wrap: Array };
 
 	connect() {
+		console.log();
 		this.allowLocation = false;
 		geolocation.getCurrentPosition((err, location) => {
 			if (err) {
