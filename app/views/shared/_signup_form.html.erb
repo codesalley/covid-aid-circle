@@ -13,7 +13,7 @@
       <label class='py-2 new-label'for="floatingLastName">Last Name</label>
     </div>
     <div class="form-floating  mb-1">
-      <%= f.text_field :phone_number, class: 'form-control  px-2',  placeholder:"Phone Number", require: true  %>
+      <%= f.text_field(:phone_number,  {  class: 'form-control  px-2' , placeholder:"Phone Number eg(+1 343 343 4545)" , require: true, pattern: '\d{10}' } ) %>
       <label class='py-2 new-label'for="floatingPhone">Phone Number</label>
     </div>
     <div class="form-floating  mb-1">
