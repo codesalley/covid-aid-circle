@@ -1,0 +1,16 @@
+<div>
+  <%= form_with(model: user, url: registration_path) do |f|  %>
+    <div class="form-floating">
+      <%= f.text_field :first_name, class: 'form-control',  placeholder:"First Name" %>
+      <label for="floatingPassword">First Name</label>
+    </div>
+    <div class="form-floating">
+      <%= f.text_field :middle_name, class: 'form-control',  placeholder:"Middle Name" %>
+      <label for="floatingPassword">Middle Name</label>
+    </div>
+    <div class="form-floating">
+      <%= f.text_field :last_name, class: 'form-control',  placeholder:"Last Name" %>
+      <label for="floatingPassword">Last Name</label>
+    </div>
+  <% end %>
+</div>
