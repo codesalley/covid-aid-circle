@@ -11,8 +11,7 @@ class SessionsController < ApplicationController
         if user.save
             session[:user_id] = user.id
             ip =  request.location
-            results = Geocoder.search(ip)
-            user.codinates = results.first.coordinates
+            user.update(codinates: ip.data["loc"].split(','))
             redirect_to welcome_path, notice: 'welcome, verify account to get connected'
         else
           render  :signup
@@ -23,12 +22,19 @@ class SessionsController < ApplicationController
     def verify_code
          if current_user.tmp_code === params[:confirmation_code]
             current_user.update(activated: true)
-            redirect_to root_path
+            redirect_to root_path, notice: 'account activated'
          else
             flash[:alert] = 'invalid code'
             render :welcome
          end
         
+    end
+    def login_user 
+    end
+    
+    def logout 
+        session[:user_id] = nil 
+        redirect_to registration_path
     end
 
     private 

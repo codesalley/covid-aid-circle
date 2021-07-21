@@ -5,19 +5,21 @@ class HomeController < ApplicationController
         @logData  = []
         User.all.map do |user|  
             if user.codinates.size > 0 
-                results = Geocoder.search(user.current_sign_in_ip)
+                
+               
                 @logData << JSON.generate( { 
                             lat: user.codinates[0], 
                             lng:  user.codinates[1], 
                             donor: user.donor,
                             user: user.first_name + " " +  user.last_name,
-                        } ) unless results.nil?
+                        } ) unless user.codinates.nil?
             end
         end
     end
 
     def user_profile
-      
+      @donations = current_user.donations
+      p  @donations
   
     end
 
