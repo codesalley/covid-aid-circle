@@ -2,6 +2,7 @@ import { Controller } from "stimulus";
 import consumer from "channels/consumer";
 
 export default class extends Controller {
+	static targets = ["messages"];
 	connect() {
 		this.subscription = consumer.subscriptions.create(
 			{
@@ -14,6 +15,7 @@ export default class extends Controller {
 				received: this._received.bind(this),
 			}
 		);
+		console.log();
 	}
 
 	_connect() {
@@ -26,5 +28,8 @@ export default class extends Controller {
 	_received(data) {
 		console.log("recired");
 		console.log(data);
+		if (data.message) {
+			this.messagesTarget.insertAdjacentHTML("beforeend", data.message);
+		}
 	}
 }

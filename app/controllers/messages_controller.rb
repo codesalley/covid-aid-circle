@@ -4,13 +4,14 @@ class MessagesController < ApplicationController
 
   def chat
     @chat
+    @receiver = User.find_by(id: params[:id])
     @message = Message.new
   end
 
   def send_message
-    @message = @chat.messages.build(message_params)
+    @message = @chat.messages.build(body: params[:message][:body], user_id: current_user.id)
     @message.save
-    ChatChannel.broadcast_to @chat, message: @message
+    ChatChannel.broadcast_to @chat, message: render_to_string(@message)
   end
 
   private
@@ -27,9 +28,5 @@ class MessagesController < ApplicationController
       @chat = current_user.chats.build(title: set_pipLine)
       @chat.save
     end
-  end
-
-  def message_params
-    params.require(:message).permit(:body)
   end
 end

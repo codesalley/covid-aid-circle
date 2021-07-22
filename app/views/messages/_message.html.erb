@@ -1,0 +1,11 @@
+<% if message.user_id.to_i === current_user.id %>
+  <div>
+    <small> <%= message.body %> </small>
+    <p> <%= message.body %> </p>
+  </div>
+<% else %>
+  <div>
+    <small> <%= message.body %></small>
+    <p> <%= message.body %> </p>
+  </div>
+<% end %>
