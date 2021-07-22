@@ -58,6 +58,7 @@ export default class extends Controller {
 				if (this.wrapValue.length > 0) {
 					this.wrapValue.map((loc) => {
 						const user = JSON.parse(loc);
+						console.log(user);
 						const userData = `<div> 
                               Donate to ${user.user}
                               <button id='donate' onclick="this.donate" class="btn donate-btn btn-outline-primary"> Donate </button>
@@ -67,8 +68,8 @@ export default class extends Controller {
 						});
 						const marker = new googlemap.Marker({
 							position: {
-								lat: user.lat,
-								lng: user.lng,
+								lat: parseFloat(user.lat),
+								lng: parseFloat(user.lng),
 							},
 							map: map,
 							title: user.donor ? "Donor" : "Receiver",
