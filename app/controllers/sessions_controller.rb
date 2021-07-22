@@ -11,6 +11,7 @@ class SessionsController < ApplicationController
     p user
     if user.save
       session[:user_id] = user.id
+      cookies.encrypted[:user_id] = user.id
       ip = request.location
       user.update(codinates: ip.data["loc"].split(","))
       redirect_to welcome_path, notice: "welcome, verify account to get connected"
@@ -44,6 +45,7 @@ class SessionsController < ApplicationController
 
     if user.present? && user.authenticate(params[:password])
       session[:user_id] = user.id
+      cookies.encrypted[:user_id] = user.id
       redirect_to root_path
     else
       flash[:alert] = "invalid credentails"
@@ -55,6 +57,7 @@ class SessionsController < ApplicationController
   # logout user
   def logout
     session[:user_id] = nil
+    cookies.encrypted[:user_id] = nil
     redirect_to registration_path
   end
 
