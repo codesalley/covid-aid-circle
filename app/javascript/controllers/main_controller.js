@@ -61,7 +61,9 @@ export default class extends Controller {
 						console.log(user);
 						const userData = `<div> 
                               Donate to ${user.user}
-                              <button id='donate' onclick="this.donate" class="btn donate-btn btn-outline-primary"> Donate </button>
+                              <a id='donate' href="/donate/${user.id}" class="btn donate-btn btn-outline-primary"> Donate </a>
+                              <a id='donate' href="/chat/${user.id}" class="btn donate-btn btn-outline-primary"> chat </a>
+							  
                               <div>`;
 						const infowindow = new google.maps.InfoWindow({
 							content: userData,

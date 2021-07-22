@@ -1,0 +1,22 @@
+<div> 
+    <h3> Send Donations </h3>
+    <p> <span>To </span>  <%=  @user.first_name %>  <%=  @user.last_name %>   </p>
+    
+    <%= form_with(url: donate_path) do |f| %>
+    <div class="form-floating  mb-1">
+    <%= f.hidden_field :receiver_id,value: @user.id %>
+      <%= f.text_field(:item,  {  class: 'form-control  px-2' , placeholder:"Phone Number eg(+1 343 343 4545)" , require: true} ) %>
+      <label class='py-2 new-label'for="floatingPhone">Name of donations</label>
+    </div>
+    <div class="form-floating  mb-1">
+      <%= f.number_field(:amount,  {  class: 'form-control  px-2' , placeholder:"Phone Number eg(+1 343 343 4545)" , require: true, pattern: '\d' } ) %>
+      <label class='py-2 new-label'for="floatingPhone">Amount</label>
+    </div>
+        <div class="">
+      <%= f.submit "Donate", disable_with: 'Donating...', class: 'form-control btn signup-btn'%>
+    </div>
+    <% end %>
+    
+
+
+</div>

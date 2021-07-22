@@ -29,11 +29,6 @@ body {
 	width: 100%;
 }
 
-.sign-up-form {
-	max-width: 300px;
-	width: 100%;
-}
-
 .form-floating > .form-control,
 .form-floating > .form-select {
 	height: 2.5rem;

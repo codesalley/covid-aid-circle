@@ -10,6 +10,7 @@ class HomeController < ApplicationController
           lng: user.codinates[1],
           donor: user.donor,
           user: user.first_name + " " + user.last_name,
+          id: user.id,
         }) unless user.codinates.nil?
       end
     end
@@ -21,5 +22,22 @@ class HomeController < ApplicationController
   end
 
   def donations
+    @user = User.find_by(id: params[:id])
+  end
+
+  def confirm_donations
+    donation = current_user.donations.build(donations_params)
+    p donation
+    if donation.save
+      redirect_to profile_path, notice: "Donation Sent"
+    else
+      redirect_to profile_path, alert: "Try again later"
+    end
+  end
+
+  private
+
+  def donations_params
+    params.permit(:receiver_id, :item, :amount)
   end
 end
