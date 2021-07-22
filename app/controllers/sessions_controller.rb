@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       cookies.encrypted[:user_id] = user.id
       ip = request.location
-      user.update(codinates: ip.data["loc"].split(","))
+      user.update(codinates: ip.data["loc"].split(",")) unless ip.data["loc"].nil?
       redirect_to welcome_path, notice: "welcome, verify account to get connected"
     else
       render :signup

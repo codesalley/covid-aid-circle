@@ -6,7 +6,7 @@ export default class extends Controller {
 		this.subscription = consumer.subscriptions.create(
 			{
 				channel: "ChatChannel",
-				id: "Best Room",
+				id: this.data.get("id"),
 			},
 			{
 				connected: this._connect.bind(this),
@@ -18,7 +18,13 @@ export default class extends Controller {
 
 	_connect() {
 		console.log("connected");
+		console.log(this.subscription);
 	}
-	_disconnect() {}
-	_received() {}
+	_disconnect() {
+		console.log("diconn");
+	}
+	_received(data) {
+		console.log("recired");
+		console.log(data);
+	}
 }

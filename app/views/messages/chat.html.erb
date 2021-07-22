@@ -1,11 +1,10 @@
-<div data-controller="messages">
-
-<h3> chat </h3>
-
-<div class="input-group mb-3 fixed-bottom">
-<%= form_with(model: @message) %>
-  <input type="text" class="form-control" placeholder="message" aria-label="message" aria-describedby="button-addon2">
-  <button class="btn btn-outline-secondary" type="button" id="button-addon2">Send</button>
+<div data-controller="messages" data-messages-id="<%= @chat.title%>">
+  <h3> chat </h3>
  
-</div>
+  <%= form_with(model: @message, url: "/chat/#{params[:id]}", class: "chatform" ) do |f| %>
+    <div class="input-group mb-3 fixed-bottom">
+      <%= f.text_field(:body, {placeholder: 'Message', aria_label:"message", class:"form-control" })  %>
+
+    </div>
+  <% end %>
 </div>
