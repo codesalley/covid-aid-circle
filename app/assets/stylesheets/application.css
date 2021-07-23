@@ -13,10 +13,14 @@
  *= require_tree .
  *= require_self
  */
-
+/* 
 body {
 	width: 100vh;
 	height: 100vh;
+} */
+
+:root {
+	--auth-btn-color: #10650a;
 }
 
 #map {
@@ -53,4 +57,33 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type="number"] {
 	-moz-appearance: textfield;
+}
+
+/* signup form  */
+
+.sign-up-form {
+	max-width: 300px;
+	width: 100%;
+	padding: 5%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: auto;
+}
+
+.sign-up-form form {
+	width: 100%;
+	height: 100%;
+}
+
+.signup-btn {
+	background-color: var(--auth-btn-color);
+}
+
+.active-link {
+	text-decoration: none;
+	color: rgba(0, 0, 0, 0.781);
+	font-size: 0.8rem;
+	font-weight: 600;
 }
