@@ -1,0 +1,12 @@
+<div data-controller="messages" data-messages-id="<%= @chat.title%>">
+  <div data-messages-target="messages">
+    <%= render @chat.messages %>
+  </div>
+ 
+  <%= form_with(model: @message, url: "/chat/#{params[:id]}", class: "chatform" ) do |f| %>
+    <div class="input-group mb-3 fixed-bottom">
+      <%= f.text_field(:body, {placeholder: 'Message', aria_label:"message", class:"form-control" })  %>
+
+    </div>
+  <% end %>
+</div>

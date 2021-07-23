@@ -9,7 +9,6 @@ export default class extends Controller {
 	static values = { wrap: Array };
 
 	connect() {
-		console.log();
 		this.allowLocation = false;
 		geolocation.getCurrentPosition((err, location) => {
 			if (err) {
@@ -76,8 +75,7 @@ export default class extends Controller {
 							map: map,
 							title: user.donor ? "Donor" : "Receiver",
 							icon: user.donor ? donor : receiver,
-							collisionBehavior:
-								google.maps.CollisionBehavior.REQUIRED_AND_HIDES_OPTIONAL,
+							collisionBehavior: google.maps.CollisionBehavior.REQUIRED,
 						});
 						marker.addListener("click", () => {
 							infowindow.open({
