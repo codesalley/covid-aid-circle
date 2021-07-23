@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+  *= require font-awesome
  */
 /* 
 body {
@@ -19,13 +20,21 @@ body {
 	height: 100vh;
 } */
 
+* {
+	font-family: "Lato", sans-serif;
+}
+
 :root {
 	--auth-btn-color: #10650a;
 }
 
 #map {
 	width: 100%;
-	height: 500px;
+	height: 300px;
+}
+
+.main-page {
+	padding: 0 2%;
 }
 
 .user-avatar {
@@ -86,4 +95,55 @@ input[type="number"] {
 	color: rgba(0, 0, 0, 0.781);
 	font-size: 0.8rem;
 	font-weight: 600;
+}
+
+/* welcome page style  */
+
+.inner-nav {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(auto, 48%));
+	padding: 20px 0;
+	justify-content: space-between;
+	gap: 2%;
+}
+
+.nav-card {
+	width: 100%;
+	height: 120px;
+	border-radius: 10px;
+	text-decoration: none;
+}
+.nav-card:nth-child(1) {
+	background-color: #ff9500;
+}
+.nav-card:nth-child(2) {
+	background-color: #4ce5b1;
+}
+.nav-card:nth-child(3) {
+	background-color: #ff2d55;
+}
+.nav-card:nth-child(4) {
+	background-color: #219aff;
+}
+
+.nav-card div p {
+	text-decoration: none;
+	color: white;
+	font-size: 1.1rem;
+}
+.nav-card div {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	padding: 2% 10%;
+}
+.nav-card div i {
+	font-size: 1.5rem;
+	color: white;
+}
+
+.nav-card p {
+	text-align: center;
+	font-size: 1.6rem;
+	color: white;
 }

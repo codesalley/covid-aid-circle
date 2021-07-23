@@ -1,4 +1,4 @@
-<div>
+<div class='sign-up-form'>
   <%= form_with(url: login_path)  do |f|%>
     <div class="form-floating  mb-1">
       <%= f.text_field(:phone_number,  {  class: 'form-control  px-2' , placeholder:"Phone Number eg(+1 343 343 4545)" , require: true, pattern: '\d{10}' } ) %>

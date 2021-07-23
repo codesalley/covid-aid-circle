@@ -8,9 +8,15 @@ class MessagesController < ApplicationController
     @message = Message.new
   end
 
+  def inbox
+    @inbox = current_user.chats.order("updated_at DESC")
+  end
+
   def send_message
     @message = @chat.messages.build(body: params[:message][:body], user_id: current_user.id)
-    @message.save
+    if @message.save
+      @chat.update(updated_at: Time.now)
+    end
     ChatChannel.broadcast_to @chat, message: render_to_string(@message)
   end
 

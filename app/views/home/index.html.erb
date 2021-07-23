@@ -1,20 +1,37 @@
-<div data-controller="main" data-main-wrap-value="<%= @logData%>">
+<div class='main-page' data-controller="main" data-main-wrap-value="<%= @logData %>">
   <section>
     <div id="map" >
     </div>
   </section>
-  <section>
+  <section class='inner-nav'>
+  <%= link_to chat_path, class: 'nav-card' do  %>
     <div>
-      <button> Messages </button>
+      <p> Messages </p>
+      <i class="fa fa-comments" aria-hidden="true"></i>
     </div>
+    <p> Inbox </p>
+  <% end %>
+  <%= link_to profile_path, class: 'nav-card' do  %>
     <div>
-      <%= link_to 'profile', profile_path %>
+      <p> Profile </p>
+     <i class="fa fa-user" aria-hidden="true"></i>
     </div>
+    <p> <%= current_user.first_name.capitalize %> </p>
+  <% end %>
+  <%= link_to profile_path, class: 'nav-card' do  %>
     <div>
-      <button> Buy us coffee </button>
+      <p> Buy us coffee  </p>
+   <i class="fa fa-coffee" aria-hidden="true"></i>
     </div>
-    <div>
-      <button> Contact Admin </button>
+    <p> Thank you  </p>
+  <% end %>
+  <%= link_to profile_path, class: 'nav-card' do  %>
+    <div >
+      <p> Donations  </p>
+    
+  <i class="fa fa-gratipay" aria-hidden="true"></i>
     </div>
+    <p> <%= current_user.donations.size %>  </p>
+  <% end %>
   </section>
 </div>

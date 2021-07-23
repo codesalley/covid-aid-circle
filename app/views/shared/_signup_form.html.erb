@@ -1,5 +1,5 @@
 <div class='sign-up-form'>
-  <h3 class=''> Sign Up </h3>
+  <h3 class='py-2'> Sign Up </h3>
   <%= form_with(model: user, url: registration_path) do |f|  %>
     <div class="form-floating mb-1">
       <%= f.text_field :first_name, class: 'form-control px-2',  placeholder:"First Name", require: true  %>

@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   post "/donate", to: "home#confirm_donations"
 
   # chat methods
+  get "/chat", to: "messages#inbox"
   get "/chat/:id", to: "messages#chat"
   post "/chat/:id", to: "messages#send_message"
 
