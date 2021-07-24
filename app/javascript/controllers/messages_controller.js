@@ -18,7 +18,7 @@ export default class extends Controller {
 
 		const form = document.querySelector(".chatform");
 		const msgInput = document.querySelector(".chat-text");
-		const msgDiv = document.querySelector(".m-in-chat");
+		const sendBtn = document.querySelector(".send-btn");
 		this.msgInput = document.querySelector(".chat-text");
 
 		form.addEventListener("submit", (e) => {
@@ -26,17 +26,19 @@ export default class extends Controller {
 				e.preventDefault();
 				return false;
 			}
-			this.msgInput.value = "";
-			this.scroll();
+			sendBtn.disabled = true;
+
+			setTimeout(() => {
+				this.msgInput.value = "";
+				sendBtn.disabled = false;
+				this.scroll();
+			}, 400);
 		});
 	}
 
 	scroll() {
 		const msgDiv = document.querySelector(".m-in-chat");
-		const style = getComputedStyle(msgDiv);
-		msgDiv.scrollTop =
-			msgDiv.scrollHeight +
-			(parseInt(style.paddingBottom) + parseInt(style.paddingBottom)) * 2;
+		msgDiv.scrollTop = msgDiv.scrollHeight;
 	}
 
 	_connect() {

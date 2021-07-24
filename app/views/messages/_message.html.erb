@@ -1,8 +1,8 @@
   <% @sender = User.find(message.user_id)  %>
 <% if message.user_id.to_i === current_user.id %>
-  <div class='m-card-mob shadow-sm  current-user-msg '>
+  <div class='m-card-mob shadow-sm current_user-main  current-user-msg '>
     <div class='current_user'>
-      <small class='text-primary'>  <%=  @sender.first_name %> </small>
+      <small class='text-primary'>  <%=  @sender.first_name.capitalize %> </small>
       <p> <%= message.body %> </p>
     </div>
   </div>
