@@ -42,6 +42,7 @@ export default class extends Controller {
 	}
 
 	_connect() {
+		console.log(this.subscription);
 		this.scroll();
 	}
 	_disconnect() {}
