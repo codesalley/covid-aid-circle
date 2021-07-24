@@ -1,11 +1,16 @@
+  <% @sender = User.find(message.user_id)  %>
 <% if message.user_id.to_i === current_user.id %>
-  <div>
-    <small> <%= message.body %> </small>
-    <p> <%= message.body %> </p>
+  <div class='m-card-mob shadow-sm  current-user-msg '>
+    <div class='current_user'>
+      <small class='text-primary'>  <%=  @sender.first_name %> </small>
+      <p> <%= message.body %> </p>
+    </div>
   </div>
 <% else %>
-  <div>
-    <small> <%= message.body %></small>
-    <p> <%= message.body %> </p>
+  <div class='m-card-mob shadow-sm receive-user-msg'>
+    <div class='receive_user'>
+      <small> <%=  @sender.first_name %> </small>
+      <p> <%= message.body %> </p>
+    </div>
   </div>
 <% end %>

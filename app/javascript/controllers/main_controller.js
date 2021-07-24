@@ -33,7 +33,10 @@ export default class extends Controller {
 		console.log("donate");
 	}
 	initMap(lat, log) {
-		loadGoogleMapsApi({ key: process.env["google_api"] })
+		loadGoogleMapsApi({
+			key: process.env["google_api"],
+			client: process.env["google_api"],
+		})
 			.then((googlemap) => {
 				var directionsService = new google.maps.DirectionsService();
 				var directionsDisplay = new google.maps.DirectionsRenderer();
@@ -55,9 +58,10 @@ export default class extends Controller {
 						google.maps.CollisionBehavior.REQUIRED_AND_HIDES_OPTIONAL,
 				});
 				if (this.wrapValue.length > 0) {
-					this.wrapValue.map((loc) => {
+					console.log(this.wrapValue.length);
+					this.wrapValue.map((loc, i) => {
 						const user = JSON.parse(loc);
-						console.log(user);
+						console.table("lat", user.lat);
 						const userData = `<div> 
                               Donate to ${user.user}
                               <a id='donate' href="/donate/${user.id}" class="btn donate-btn btn-outline-primary"> Donate </a>
@@ -73,6 +77,7 @@ export default class extends Controller {
 								lng: parseFloat(user.lng),
 							},
 							map: map,
+							zIndex: i,
 							title: user.donor ? "Donor" : "Receiver",
 							icon: user.donor ? donor : receiver,
 							collisionBehavior: google.maps.CollisionBehavior.REQUIRED,

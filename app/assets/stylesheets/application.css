@@ -22,10 +22,21 @@ body {
 
 * {
 	font-family: "Lato", sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 :root {
 	--auth-btn-color: #10650a;
+	--primary-text: #1e2022;
+	--sec-text: #77838f;
+}
+
+.main-page {
+	background-color: white;
+	height: 100vh;
+	width: 100vw;
 }
 
 #map {
@@ -71,7 +82,6 @@ input[type="number"] {
 /* signup form  */
 
 .sign-up-form {
-	max-width: 300px;
 	width: 100%;
 	padding: 5%;
 	display: flex;
@@ -88,6 +98,10 @@ input[type="number"] {
 
 .signup-btn {
 	background-color: var(--auth-btn-color);
+}
+
+.chat-text {
+	font-size: 0.6rem;
 }
 
 .active-link {
@@ -129,7 +143,7 @@ input[type="number"] {
 .nav-card div p {
 	text-decoration: none;
 	color: white;
-	font-size: 1.1rem;
+	font-size: 1rem;
 }
 .nav-card div {
 	width: 100%;
@@ -144,6 +158,133 @@ input[type="number"] {
 
 .nav-card p {
 	text-align: center;
-	font-size: 1.6rem;
+	font-size: 1.4rem;
 	color: white;
+	font-weight: 600;
+}
+
+/* inbox styling  */
+
+.message-page {
+	width: 100%;
+	height: 100%;
+}
+
+.messages-inbox {
+	padding: 2% 5%;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	height: 100%;
+}
+
+.message-card {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	text-decoration: none;
+}
+
+.msg-logo {
+	width: 100%;
+	height: 100%;
+	display: inline-block;
+	overflow: hidden;
+	background-color: khaki;
+	flex: 1;
+}
+
+.msg-body {
+	line-height: 12px;
+	flex: 5;
+	align-self: center;
+	padding-left: 5%;
+}
+
+.msg-body p {
+	font-size: 1rem;
+	color: var(--primary-text);
+	margin: 0;
+}
+.msg-body small {
+	font-size: 0.6rem;
+	color: var(--sec-text);
+	overflow: hidden;
+}
+
+.time {
+	font-size: 0.5rem;
+	align-self: flex-end;
+	margin: 0;
+	color: var(--sec-text);
+	flex: 1;
+}
+
+/* in chat styling   */
+
+.m-card-mob {
+	width: 75%;
+	display: flex;
+	border: 1px solid rgba(128, 128, 128, 0.13);
+	border-radius: 10px;
+	padding: 5px;
+	margin-bottom: 5px;
+	line-height: 12px;
+	position: relative;
+}
+
+.current_user {
+	width: 100%;
+	text-align: right;
+}
+.current_user p {
+	margin-bottom: 0;
+	font-size: 0.7rem;
+}
+.current_user small {
+	font-size: 0.5rem;
+}
+.receive_user small {
+	font-size: 0.5rem;
+}
+
+.receive_user p {
+	margin-bottom: 0;
+	font-size: 0.7rem;
+}
+
+.chat-page {
+	max-width: 500px;
+	width: 100%;
+	margin: auto;
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+	margin-bottom: 5%;
+}
+
+.m-in-chat {
+	padding-top: 10px;
+	overflow-y: scroll;
+	height: 93%;
+	padding: 0 5%;
+	display: flex;
+	flex-direction: column;
+}
+
+.chatform {
+	max-width: 400px;
+	width: 100%;
+	overflow: hidden;
+	position: absolute;
+	bottom: 0;
+}
+
+.send-btn i {
+	font-size: 1.2rem;
+	color: var(--auth-btn-color);
+}
+
+.current-user-msg {
+	align-self: flex-end;
 }

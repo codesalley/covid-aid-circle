@@ -1,12 +1,12 @@
-<div data-controller="messages" data-messages-id="<%= @chat.title%>">
-  <div data-messages-target="messages">
+<div class='chat-page' data-controller="messages" data-messages-id="<%= @chat.title%>">
+  <div class='m-in-chat' data-messages-target="messages">
     <%= render @chat.messages %>
   </div>
- 
   <%= form_with(model: @message, url: "/chat/#{params[:id]}", class: "chatform" ) do |f| %>
-    <div class="input-group mb-3 fixed-bottom">
-      <%= f.text_field(:body, {placeholder: 'Message', aria_label:"message", class:"form-control" })  %>
-
+    <div class="input-group ">
+      <%= f.text_field(:body, {placeholder: 'Message', aria_label:"message", class:"form-control chat-text", require: true })  %>
+      <button class="btn bg-white btn-outline-secondary send-btn" type="submit" id="button-addon2"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+      </button>
     </div>
   <% end %>
 </div>

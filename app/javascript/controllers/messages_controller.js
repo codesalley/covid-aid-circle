@@ -15,19 +15,35 @@ export default class extends Controller {
 				received: this._received.bind(this),
 			}
 		);
-		console.log();
+
+		const form = document.querySelector(".chatform");
+		const msgInput = document.querySelector(".chat-text");
+		const msgDiv = document.querySelector(".m-in-chat");
+		this.msgInput = document.querySelector(".chat-text");
+
+		form.addEventListener("submit", (e) => {
+			if (msgInput.value == "") {
+				e.preventDefault();
+				return false;
+			}
+			this.msgInput.value = "";
+			this.scroll();
+		});
+	}
+
+	scroll() {
+		const msgDiv = document.querySelector(".m-in-chat");
+		const style = getComputedStyle(msgDiv);
+		msgDiv.scrollTop =
+			msgDiv.scrollHeight +
+			(parseInt(style.paddingBottom) + parseInt(style.paddingBottom)) * 2;
 	}
 
 	_connect() {
-		console.log("connected");
-		console.log(this.subscription);
+		this.scroll();
 	}
-	_disconnect() {
-		console.log("diconn");
-	}
+	_disconnect() {}
 	_received(data) {
-		console.log("recired");
-		console.log(data);
 		if (data.message) {
 			this.messagesTarget.insertAdjacentHTML("beforeend", data.message);
 		}
