@@ -69,11 +69,14 @@ export default class extends Controller {
 				});
 				const userData = `
 								<div class='map-info-card'>
+
 									<img src="${person}" class="donation-map-logo rounded-circle" />
 									<div class='map-in-details'>
 									<p>  Donate to ${user.user} </p>
-									<a id='donate' href="/donate/${user.id}" class=" donate-btn "> Donate </a>
-									<a id='donate' href="/chat/${user.id}" class=" donate-chat-btn "> chat </a>
+									<div class='map-donate-btn'> 
+									<a id='donate' href="/donate/${user.id}" class=" donate-btn rounded "> Donate </a>
+									<a id='donate' href="/chat/${user.id}" class=" donate-chat-btn rounded "> chat </a>
+									</div>
 							  		</div>
 				            	<div>`;
 

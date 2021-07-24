@@ -60,8 +60,10 @@ body {
 }
 
 .user-avatar {
-	max-width: 100px;
+	max-width: 150px;
 	width: 100%;
+	background-color: cornsilk;
+	padding: 20px;
 }
 
 .form-floating > .form-control,
@@ -126,7 +128,7 @@ input[type="number"] {
 
 .inner-nav {
 	display: grid;
-	height: 40%;
+	height: 30%;
 	grid-template-columns: repeat(auto-fill, minmax(auto, 48%));
 	padding: 20px 0;
 	justify-content: space-between;
@@ -313,10 +315,70 @@ input[type="number"] {
 
 .map-in-details {
 	display: flex;
-	gap: 10px;
+	flex-direction: column;
 }
 
 .donate-btn,
 .donate-chat-btn {
 	text-decoration: none;
+	padding: 5px 10px;
+	color: white;
+}
+.donate-btn:hover,
+.donate-chat-btn:hover {
+	text-decoration: none;
+	padding: 5px 10px;
+	color: white;
+}
+
+.donate-btn {
+	background-color: var(--auth-btn-color);
+}
+
+.donate-chat-btn {
+	background-color: #ff9500;
+}
+
+.map-donate-btn {
+	display: flex;
+	gap: 10px;
+}
+
+.coffe-cup {
+	left: 70%;
+	max-width: 40px;
+	padding: 10px 5px;
+	background-color: white;
+	border-radius: 0 0 10px 10px;
+}
+.coffe-cup i {
+	color: rgba(0, 0, 0, 0.74);
+	font-size: 2rem;
+}
+
+/* profile final touch  */
+
+.p-username {
+	font-weight: 700;
+}
+
+.p-user-address {
+	font-size: 0.8rem;
+	color: gray;
+}
+
+.no-donations-list {
+	display: grid;
+	place-content: center;
+}
+.no-donations-list i {
+	font-size: 5rem;
+	text-align: center;
+	color: gray;
+	opacity: 0.7;
+}
+
+.donation-h {
+	font-weight: 700;
+	color: rgba(0, 0, 0, 0.767);
 }

@@ -1,8 +1,17 @@
-<div>
-  <section class='d-flex flex-column'>
-    <%= image_tag('person.png', class: 'user-avatar') %>
-    <h2> <%= current_user.first_name %>  <%= current_user.last_name %></h2>
-    <h2>  <%= current_user.address %></h2>
+<div class='w-100 h-100'>
+  <section class='d-flex w-100 h-100 flex-column align-items-center pt-5'>
+    <%= image_tag('person.png', class: 'user-avatar rounded-circle') %>
+    <h2 class='p-username pt-1'> <%= current_user.first_name.capitalize %>  <%= current_user.last_name.capitalize %></h2>
+    <h2 class='p-user-address'>Address :  <%= current_user.address %></h2>
+    <% if @donations.length > 0 %>
+      <section class='donations-list h-100 w-100  '>
+        <h2 class='donation-h text-center'> list of donation </h2>
+      </section>
+    <% else %>
+      <section class='no-donations-list h-100 w-100 '>
+        <i class="fa fa-tachometer" aria-hidden="true"></i>
+        <h2 class='donation-h text-center'> No Donations  Yet </h2>
+      </section>
+    <% end %>
   </section>
-  <section> list of donation </section>
 </div>
