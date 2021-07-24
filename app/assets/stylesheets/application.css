@@ -39,9 +39,20 @@ body {
 	width: 100vw;
 }
 
+.map-section {
+	height: 60%;
+	position: relative;
+}
+
+.main-page-index {
+	width: 100%;
+	height: 100%;
+}
+
 #map {
 	width: 100%;
-	height: 300px;
+
+	height: 100%;
 }
 
 .main-page {
@@ -115,6 +126,7 @@ input[type="number"] {
 
 .inner-nav {
 	display: grid;
+	height: 40%;
 	grid-template-columns: repeat(auto-fill, minmax(auto, 48%));
 	padding: 20px 0;
 	justify-content: space-between;
