@@ -300,3 +300,23 @@ input[type="number"] {
 .current-user-msg {
 	align-self: flex-end;
 }
+
+.donation-map-logo {
+	width: 60px;
+	height: 60px;
+	object-fit: cover;
+}
+
+.map-info-card {
+	display: flex;
+}
+
+.map-in-details {
+	display: flex;
+	gap: 10px;
+}
+
+.donate-btn,
+.donate-chat-btn {
+	text-decoration: none;
+}

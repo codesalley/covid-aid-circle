@@ -2,6 +2,7 @@ import geolocation from "geolocation";
 import loadGoogleMapsApi from "load-google-maps-api";
 import receiver from "../../assets/covidAid/receiver.png";
 import donor from "../../assets/covidAid/donor.png";
+import person from "../../assets/images/person.png";
 import { Controller } from "stimulus";
 
 export default class extends Controller {
@@ -37,98 +38,56 @@ export default class extends Controller {
 			key: process.env["google_api"],
 			client: process.env["google_api"],
 		});
-		const map = new googlemap.Map(document.getElementById("map"), {
+		console.log(google);
+		const map = new google.Map(document.getElementById("map"), {
 			center: {
 				lat: lat,
 				lng: log,
 			},
 			zoom: 12,
 		});
-		console.log(map);
-		console.log(google);
+		new google.Marker({
+			position: {
+				lat: lat,
+				lng: log,
+			},
+			map: map,
+		});
 
-		// loadGoogleMapsApi({
-		// 	key: process.env["google_api"],
-		// 	client: process.env["google_api"],
-		// })
-		// 	.then((googlemap) => {
-		// 		console.log(googlemap);
-		// 		const map = new googlemap.Map(document.getElementById("map"), {
-		// 			center: {
-		// 				lat: lat,
-		// 				lng: log,
-		// 			},
-		// 			zoom: 12,
-		// 		});
+		if (this.wrapValue.length > 0) {
+			for (let i = 0; i < this.wrapValue.length; i++) {
+				const user = JSON.parse(this.wrapValue[i]);
+				const { lat, lng, donor } = user;
+				console.log(user);
 
-		// 		new googlemap.Marker({
-		// 			position: {
-		// 				lat: lat,
-		// 				lng: log,
-		// 			},
-		// 			map:  map,
-		// 		});
-		// 		const user = JSON.parse(this.wrapValue[1]);
-		// 		new googlemap.Marker({
-		// 			position: {
-		// 				lat: lat,
-		// 				lng: log,
-		// 			},
-		// 			map: map,
-		// 		});
-		// 		new googlemap.Marker({
-		// 			position: {
-		// 				lat: parseFloat(user.lat),
-		// 				lng: parseFloat(user.lng),
-		// 			},
-		// 			map: map,
-		// 			zIndex: 2,
-		// 			title: user.donor ? "Donor" : "Receiver",
-		// 			icon: user.donor ? donor : receiver,
-		// 			collisionBehavior: google.maps.CollisionBehavior.REQUIRED,
-		// 		});
-		// if (this.wrapValue.length > 0) {
-		// 	console.log(this.wrapValue.length);
-		// 	this.wrapValue.map((loc, i) => {
-		// 		const user = JSON.parse(loc);
-		// 		console.table("lat", user.lat);
-		// 		const userData = `<div>
-		//               Donate to ${user.user}
-		//               <a id='donate' href="/donate/${user.id}" class="btn donate-btn btn-outline-primary"> Donate </a>
-		//               <a id='donate' href="/chat/${user.id}" class="btn donate-btn btn-outline-primary"> chat </a>
+				const marker = new google.Marker({
+					position: new google.LatLng(parseFloat(lat), parseFloat(lng)),
+					map: map,
+					title: donor ? "Donor" : "Receiver",
+					icon: donor ? donor : receiver,
+					collisionBehavior: google.CollisionBehavior.REQUIRED,
+				});
+				const userData = `
+								<div class='map-info-card'>
+									<img src="${person}" class="donation-map-logo rounded-circle" />
+									<div class='map-in-details'>
+									<p>  Donate to ${user.user} </p>
+									<a id='donate' href="/donate/${user.id}" class=" donate-btn "> Donate </a>
+									<a id='donate' href="/chat/${user.id}" class=" donate-chat-btn "> chat </a>
+							  		</div>
+				            	<div>`;
 
-		//               <div>`;
-		// 		const infowindow = new google.maps.InfoWindow({
-		// 			content: userData,
-		// 		});
-		// 		const marker = new googlemap.Marker({
-		// 			position: {
-		// 				lat: parseFloat(user.lat),
-		// 				lng: parseFloat(user.lng),
-		// 			},
-		// 			map: map,
-		// 			zIndex: i,
-		// 			title: user.donor ? "Donor" : "Receiver",
-		// 			icon: user.donor ? donor : receiver,
-		// 			collisionBehavior: google.maps.CollisionBehavior.REQUIRED,
-		// 		});
-		// 		marker.addListener("click", () => {
-		// 			infowindow.open({
-		// 				anchor: marker,
-		// 				map,
-		// 				shouldFocus: false,
-		// 			});
-		// 			const donateBtn = document.querySelector(".donate-btn");
-		// 			console.log(document.getElementById("donate"));
-		// 			donateBtn.addListener("click", () => {
-		// 				console.log("map");
-		// 			});
-		// 		});
-		// 	});
-		// }
-		// })
-		// .catch((e) => {
-		// 	console.log(e);
-		// });
+				const infowindow = new google.InfoWindow({
+					content: userData,
+				});
+				marker.addListener("click", () => {
+					infowindow.open({
+						anchor: marker,
+						map,
+						shouldFocus: false,
+					});
+				});
+			}
+		}
 	}
 }

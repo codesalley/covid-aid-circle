@@ -24,5 +24,5 @@ markers = [
 User.create(first_name: "code", last_name: "salley", activated: true, verified: true, codinates: [-122.3396, 47.6095], password: "testtest", password_confirmation: "testtest", phone_number: "123423456").save
 
 markers.each_with_index do |mark, index|
-  User.create(phone_number: "123123" + mark[1].to_s, address: "test add" + mark[1].to_s, first_name: "myfirst" + mark[1].to_s, last_name: "maylast1" + mark[1].to_s, activated: true, verified: true, codinates: mark, password: "password#{index}", password_confirmation: "password#{index}").save
+  User.create(phone_number: "123123" + mark[1].to_s, address: "test add" + mark[1].to_s, first_name: "myfirst" + mark[1].to_s, last_name: "maylast1" + mark[1].to_s, activated: true, verified: true, codinates: mark.reverse, password: "password#{index}", password_confirmation: "password#{index}").save
 end
