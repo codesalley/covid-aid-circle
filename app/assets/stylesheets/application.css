@@ -63,14 +63,8 @@ body {
 	padding: 20px;
 }
 
-.form-floating > .form-control,
-.form-floating > .form-select {
-	height: 2.5rem;
-	padding: 0;
-}
-
 .new-label {
-	font-size: 0.8rem;
+	font-size: 0.9rem;
 }
 
 .signup-btn {
@@ -98,16 +92,41 @@ input[type="number"] {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	margin: auto;
+	align-content: flex-end;
+	height: 100%;
+}
+
+.sign-up-form h3 {
+	font-size: 1.8rem;
+	font-weight: 600;
 }
 
 .sign-up-form form {
 	width: 100%;
-	height: 100%;
 }
 
-.signup-btn {
+.otp-form {
+	max-width: 400px;
+	margin: auto;
+}
+
+.signup-btn,
+.otp-btn {
 	background-color: var(--auth-btn-color);
+}
+
+.otp-welcome {
+	display: grid;
+	place-content: center;
+}
+
+.otp-heading {
+	font-size: 1rem;
+	text-align: center;
+}
+
+.otp-btn {
+	color: white;
 }
 
 .chat-text {
@@ -117,8 +136,40 @@ input[type="number"] {
 .active-link {
 	text-decoration: none;
 	color: rgba(0, 0, 0, 0.781);
-	font-size: 0.8rem;
+	font-size: 1rem;
 	font-weight: 600;
+	padding: 10px 0;
+}
+
+.m-donation-page {
+	overflow: hidden;
+	width: 100%;
+	max-width: 450px;
+	height: 100%;
+	margin: auto;
+	padding-top: 20%;
+}
+
+.donation-form {
+	max-width: 450px;
+	width: 100%;
+}
+.donation-form small {
+	color: gray;
+}
+
+.donation-form .form-floating {
+	width: 100%;
+}
+
+.donation-user {
+	font-size: 0.8rem;
+	text-align: center;
+}
+
+.dontion-heading {
+	font-size: 1.5rem;
+	font-weight: 700;
 }
 
 /* welcome page style  */

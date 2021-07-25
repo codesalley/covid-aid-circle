@@ -1,6 +1,10 @@
 <div class='message-page'>
   <h3 class='text-center py-2'> Inbox </h3>
   <div class='messages-inbox'>
-    <%= render  @inbox %>
+    <%= @inbox.each do |msg| %>
+      <%= render 'chats/chat',  chat: msg %>
+      <%= msg.messages.length %>
+      <%= current_user.id %>
+    <% end %>
   </div>
 </div>

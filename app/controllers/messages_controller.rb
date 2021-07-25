@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   before_action :authenticate_user
+  before_action :authenticate_account
   before_action :set_channel
 
   def chat
@@ -31,7 +32,7 @@ class MessagesController < ApplicationController
     @chat = Chat.find_by(title: set_pipLine)
     p @chat
     if !@chat
-      @chat = current_user.chats.build(title: set_pipLine)
+      @chat = Chat.new(title: set_pipLine, sender_id: current_user.id, receiver_id: params[:id].to_i)
       @chat.save
     end
   end

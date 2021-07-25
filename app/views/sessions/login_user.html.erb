@@ -1,15 +1,17 @@
 <div class='sign-up-form'>
+  <h3 class='py-2'> WELCOME BACK </h3>
   <%= form_with(url: login_path)  do |f|%>
-    <div class="form-floating  mb-1">
+    <div class="form-floating  mb-3">
       <%= f.text_field(:phone_number,  {  class: 'form-control  px-2' , placeholder:"Phone Number eg(+1 343 343 4545)" , require: true, pattern: '\d{10}' } ) %>
       <label class='py-2 new-label'for="floatingPhone">Phone Number</label>
     </div>
-    <div class="form-floating  mb-1">
+    <div class="form-floating  mb-3">
       <%= f.password_field :password, class: 'form-control  px-2', require: true , placeholder:"Password" %>
       <label class='py-2 new-label'for="floatingAddress">Password</label>
     </div>
-    <div class="">
-      <%= f.submit "Submit", disable_with: 'Submiting...', class: 'form-control btn signup-btn'%>
+    <div class="d-flex flex-column gap-1">
+      <%= f.submit "LOG IN", disable_with: 'LOGGING IN...', class: 'form-control btn signup-btn'%>
+      <%= link_to 'SIGN UP NOW', registration_path, class: 'active-link' %>
     </div>
   <% end %>
 </div>

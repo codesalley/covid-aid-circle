@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
 
   def verify_code
     if current_user.tmp_code === params[:confirmation_code]
-      current_user.update(activated: true)
+      current_user.update(verified: true)
       redirect_to root_path, notice: "account activated"
     else
       flash[:alert] = "invalid code"

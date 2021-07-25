@@ -36,6 +36,10 @@ export default class extends Controller {
 		});
 	}
 
+	disconnect() {
+		this._disconnect();
+	}
+
 	scroll() {
 		const msgDiv = document.querySelector(".m-in-chat");
 		msgDiv.scrollTop = msgDiv.scrollHeight;
@@ -45,7 +49,9 @@ export default class extends Controller {
 		console.log(this.subscription);
 		this.scroll();
 	}
-	_disconnect() {}
+	_disconnect() {
+		consumer.subscriptions.remove(this.subscription);
+	}
 	_received(data) {
 		if (data.message) {
 			this.messagesTarget.insertAdjacentHTML("beforeend", data.message);

@@ -6,6 +6,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def authenticate_account
+    user = User.find_by(id: session[:user_id])
+    if user && !user.verified
+      redirect_to welcome_path
+    end
+  end
+
   def current_user
     user = User.find_by(id: session[:user_id])
     user
@@ -14,7 +21,7 @@ class ApplicationController < ActionController::Base
   def get_codinates
     logData = []
     User.all.map do |user|
-      if user.codinates.size > 0
+      if user.codinates.size > 0 && user.id != current_user.id
         logData << JSON.generate({
           lat: user.codinates[0],
           lng: user.codinates[1],

@@ -33,9 +33,9 @@
       <%=  f.check_box :donor, { class: 'form-check-input  px-2', id:"flexSwitchCheckDefault" }, "true", "false" %>
       <label class='py-2 new-label text-primary'for="flexSwitchCheckDefault">I'm here to donate</label>
     </div>
-    <div class="">
-      <%= f.submit "Sign Up", disable_with: 'Signing up...', class: 'form-control btn signup-btn'%>
-      <%= link_to 'sign in NOW', login_path, class: 'active-link' %>
+    <div class=" d-flex flex-column gap-1">
+      <%= f.submit "SIGN UP", disable_with: 'SIGNING UP ...', class: 'form-control btn signup-btn'%>
+      <%= link_to 'SIGN IN NOW', login_path, class: 'active-link' %>
     </div>
   <% end %>
 </div>

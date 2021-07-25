@@ -13,9 +13,9 @@
   </div>
   <%= form_with(model: @message, url: "/chat/#{@receiver.id}", class: "chatform" ) do |f| %>
     <div class="input-group ">
-      <%= f.text_area(:body, {placeholder: 'Message', aria_label:"message", class:"form-control chat-text", require: true })  %>
-      <button class="btn bg-white btn-outline-secondary send-btn" type="submit" id="button-addon2"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>
-      </button>
-    </div>
-  <% end %>
+      <%= f.text_field(:body, {placeholder: 'Message', aria_label:"message", class:"form-control chat-text", require: true })  %>
+      <%# <button class="btn bg-white btn-outline-secondary send-btn" type="submit" id="button-addon2"><i class="fa fa-paper-plane-o" aria-hidden="true"></i> %>
+    </button>
+  </div>
+<% end %>
 </div>
