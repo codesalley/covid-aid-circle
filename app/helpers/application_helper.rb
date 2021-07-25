@@ -9,6 +9,16 @@ module ApplicationHelper
     res
   end
 
+  def get_donation_receiver(donation)
+    user_id = if donation.receiver_id == current_user.id
+        donation.donor_id
+      else
+        donation.receiver_id
+      end
+
+    user_id
+  end
+
   def get_chat(title)
     to_arr = title.split(":")
     to_arr.shift

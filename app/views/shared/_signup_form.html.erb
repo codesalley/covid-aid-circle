@@ -1,37 +1,37 @@
-<div class='sign-up-form'>
+<div class='sign-up-form shadow'>
   <h3 class='py-2'> Sign Up </h3>
   <%= form_with(model: user, url: registration_path) do |f|  %>
-    <div class="form-floating mb-1">
-      <%= f.text_field :first_name, class: 'form-control px-2',  placeholder:"First Name", require: true  %>
-      <label class='py-2 new-label' for="floatingFirstName">First Name</label>
+    <div class="form-floating mb-1  ">
+      <%= f.text_field :first_name, class: 'form-control px-2 py-1',  placeholder:"First Name", require: true  %>
+      <label class='py-1 new-label' for="floatingFirstName">First Name</label>
     </div>
-    <div class="form-floating  mb-1">
-      <%= f.text_field :middle_name, class: 'form-control  px-2',  placeholder:"Middle Name" %>
-      <label class='py-2 new-label'for="floatingMiddleName">Middle Name</label>
+    <div class="form-floating  mb-1  ">
+      <%= f.text_field :middle_name, class: 'form-control  px-2 py-1',  placeholder:"Middle Name" %>
+      <label class='py-1 new-label'for="floatingMiddleName">Middle Name</label>
     </div>
-    <div class="form-floating  mb-1">
-      <%= f.text_field :last_name, class: 'form-control  px-2',  placeholder:"Last Name", require: true  %>
-      <label class='py-2 new-label'for="floatingLastName">Last Name</label>
+    <div class="form-floating  mb-1  ">
+      <%= f.text_field :last_name, class: 'form-control  px-2 py-1',  placeholder:"Last Name", require: true  %>
+      <label class='py-1 new-label'for="floatingLastName">Last Name</label>
     </div>
-    <div class="form-floating  mb-1">
-      <%= f.text_field(:phone_number,  {  class: 'form-control  px-2' , placeholder:"Phone Number eg(+1 343 343 4545)" , require: true, pattern: '\d{10}' } ) %>
-      <label class='py-2 new-label'for="floatingPhone">Phone Number <small> <em> eg: +1 234 123 1234</em> </small> </label>
+    <div class="form-floating  mb-1  ">
+      <%= f.text_field(:phone_number,  {  class: 'form-control  px-2 py-1' , placeholder:"Phone Number eg(+1 343 343 4545)" , require: true, pattern: '\d{10}' } ) %>
+      <label class='py-1 new-label'for="floatingPhone">Phone Number <small> <em> eg: +1 234 123 1234</em> </small> </label>
     </div>
-    <div class="form-floating  mb-1">
-      <%= f.text_field :address, class: 'form-control  px-2', require: true ,  placeholder:"Address" %>
-      <label class='py-2 new-label'for="floatingAddress">Address</label>
+    <div class="form-floating  mb-1  ">
+      <%= f.text_field :address, class: 'form-control  px-2 py-1', require: true ,  placeholder:"Address" %>
+      <label class='py-1 new-label'for="floatingAddress">Address</label>
     </div>
-    <div class="form-floating  mb-1">
-      <%= f.password_field :password, class: 'form-control  px-2', require: true , placeholder:"Password" %>
-      <label class='py-2 new-label'for="floatingAddress">Password</label>
+    <div class="form-floating  mb-1  ">
+      <%= f.password_field :password, class: 'form-control  px-2 py-1', require: true , placeholder:"Password" %>
+      <label class='py-1 new-label'for="floatingAddress">Password</label>
     </div>
-    <div class="form-floating  mb-1">
-      <%= f.password_field :password_confirmation, class: 'form-control  px-2', require: true , placeholder:"Password" %>
-      <label class='py-2 new-label'for="floatingAddress">Confirm Password</label>
+    <div class="form-floating   mb-1">
+      <%= f.password_field :password_confirmation, class: 'form-control  px-2 py-1', require: true , placeholder:"Password" %>
+      <label class='py-1 new-label'for="floatingAddress">Confirm Password</label>
     </div>
     <div class="form-check form-switch mb-2 d-flex flex-row align-items-center gap-2 ">
       <%=  f.check_box :donor, { class: 'form-check-input  px-2', id:"flexSwitchCheckDefault" }, "true", "false" %>
-      <label class='py-2 new-label text-primary'for="flexSwitchCheckDefault">I'm here to donate</label>
+      <label class='py-1 new-label text-primary'for="flexSwitchCheckDefault">I'm here to donate</label>
     </div>
     <div class=" d-flex flex-column gap-1">
       <%= f.submit "SIGN UP", disable_with: 'SIGNING UP ...', class: 'form-control btn signup-btn'%>

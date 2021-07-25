@@ -10,7 +10,7 @@ class MessagesController < ApplicationController
   end
 
   def inbox
-    @inbox = current_user.chats.order("updated_at DESC")
+    @inbox = current_user.chats
   end
 
   def send_message

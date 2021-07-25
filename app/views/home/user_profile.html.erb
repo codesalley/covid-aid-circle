@@ -4,8 +4,13 @@
     <h2 class='p-username pt-1'> <%= current_user.first_name.capitalize %>  <%= current_user.last_name.capitalize %></h2>
     <h2 class='p-user-address'>Address :  <%= current_user.address %></h2>
     <% if @donations.length > 0 %>
-      <section class='donations-list h-100 w-100  '>
+      <section class='donations-list   w-100  '>
         <h2 class='donation-h text-center'> list of donation </h2>
+        <div class='w-100 h-100 list'>
+          <% for item in @donations %>
+            <%= render 'shared/donationCard', donation: item %>
+          <% end %>
+        </div>
       </section>
     <% else %>
       <section class='no-donations-list h-100 w-100 '>
