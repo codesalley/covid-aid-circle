@@ -30,14 +30,14 @@ export default class extends Controller {
 
 			setTimeout(() => {
 				this.msgInput.value = "";
-				sendBtn.disabled = false;
+				// sendBtn.disabled = false;
 				this.scroll();
 			}, 400);
 		});
 	}
 
 	disconnect() {
-		this._disconnect();
+		consumer.subscriptions.remove(this.subscription);
 	}
 
 	scroll() {
@@ -46,13 +46,11 @@ export default class extends Controller {
 	}
 
 	_connect() {
-		console.log(this.subscription);
 		this.scroll();
 	}
-	_disconnect() {
-		consumer.subscriptions.remove(this.subscription);
-	}
+	_disconnect() {}
 	_received(data) {
+		console.log(data);
 		if (data.message) {
 			this.messagesTarget.insertAdjacentHTML("beforeend", data.message);
 		}

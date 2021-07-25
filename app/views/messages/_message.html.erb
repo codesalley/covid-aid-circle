@@ -6,7 +6,8 @@
       <p> <%= message.body %> </p>
     </div>
   </div>
-<% else %>
+<% end %>
+<%   if message.user_id.to_i != current_user.id %>
   <div class='m-card-mob shadow-sm receive-user-msg'>
     <div class='receive_user'>
       <small> <%=  @sender.first_name %> </small>
@@ -14,4 +15,3 @@
     </div>
   </div>
 <% end %>
-<p>ewe </p>

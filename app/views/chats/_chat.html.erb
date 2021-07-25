@@ -1,5 +1,5 @@
 <% if chat.messages.length > 0 %>
-  <% @sender = User.find(chat.user_id)  %>
+  <% @sender = User.find(chat.sender_id)  %>
   <%= link_to "/chat/#{get_chat(chat.title)}", class:'message-card' do %>
     <%= image_tag('person.png', class: 'msg-logo rounded-circle') %>
     <div class='msg-body'>
