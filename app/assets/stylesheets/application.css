@@ -354,12 +354,17 @@ nav {
 	padding: 10px 0;
 }
 .receive_user small {
-	font-size: 0.5rem;
+	font-size: 0.7rem;
+	font-style: italic;
+	font-weight: 600;
+	padding: 10px 0;
 }
 
 .receive_user p {
 	margin-bottom: 0;
-	font-size: 0.7rem;
+	font-size: 0.9rem;
+	line-height: 18px;
+	font-weight: 400;
 }
 
 .chat-page {
@@ -370,6 +375,11 @@ nav {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+}
+
+.welcome-nav {
+	bottom: 5%;
+	left: 50%;
 }
 
 .m-in-chat {

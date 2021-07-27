@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   def authenticate_user
     user = User.find_by(id: session[:user_id])
     if !user
-      redirect_to registration_path
+      redirect_to home_path
     end
   end
 
@@ -28,6 +28,22 @@ class ApplicationController < ActionController::Base
     logData = []
     User.all.map do |user|
       if user.codinates.size > 0 && user.id != current_user.id
+        logData << JSON.generate({
+          lat: user.codinates[0],
+          lng: user.codinates[1],
+          donor: user.donor,
+          user: user.first_name.capitalize + " " + user.last_name,
+          id: user.id,
+        }) unless user.codinates.nil?
+      end
+    end
+    logData
+  end
+
+  def newCodinates
+    logData = []
+    User.all.map do |user|
+      if user.codinates.size > 0
         logData << JSON.generate({
           lat: user.codinates[0],
           lng: user.codinates[1],

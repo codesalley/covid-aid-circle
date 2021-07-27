@@ -1,9 +1,13 @@
 class HomeController < ApplicationController
-  before_action :authenticate_user
-  before_action :authenticate_account
+  before_action :authenticate_user, except: :landing_page
+  before_action :authenticate_account, except: :landing_page
 
   def index
     @logData = get_codinates
+  end
+
+  def landing_page
+    @logData = newCodinates
   end
 
   def user_profile

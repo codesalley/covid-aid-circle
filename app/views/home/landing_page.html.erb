@@ -1,0 +1,10 @@
+<div class='main-page-index h-100 w-100 ' data-controller="main" data-main-wrap-value="<%= @logData %>">
+  <section class='h-100 '>
+    <div id="map" >
+    </div>
+  </section>
+  <section class=' position-absolute welcome-nav d-flex gap-5'>
+    <%= link_to 'Login',login_path, class: 'btn btn-outline-success '  %>
+    <%= link_to 'Signup',registration_path, class: 'btn  btn-success '  %>
+  </section>
+</div>
