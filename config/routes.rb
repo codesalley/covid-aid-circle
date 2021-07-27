@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   # user profile page
   get "/profile", to: "home#user_profile"
+  post "profile", to: "home#add_email"
+  delete "profile", to: "home#remove_email"
 
   # methods to handle donation
   get "/donate/:id", to: "home#donations"

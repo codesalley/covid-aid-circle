@@ -8,8 +8,8 @@ class SessionsController < ApplicationController
 
   def new_session
     user = User.create(user_params)
-    p user
     if user.save
+      send_sms(user.phone_number, user.tmp_code)
       session[:user_id] = user.id
       cookies.encrypted[:user_id] = user.id
       ip = request.location
@@ -51,7 +51,6 @@ class SessionsController < ApplicationController
       flash[:alert] = "invalid credentails"
       render :login_user
     end
-    p params
   end
 
   # logout user

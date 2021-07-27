@@ -1,11 +1,13 @@
 <div class='chat-page' data-controller="messages" data-messages-id="<%= @chat.title%>">
   <% @receiver = User.find(params[:id])  %>
-  <div class='m-chat-header'>
-    <%= image_tag('person.png', class: 'donation-map-logo chat-logo rounded-circle') %>
-    <div class='chat-header-details'>
-      <p> <%= @receiver.first_name.slice(..15).capitalize %> ...
-      </p>
-      <a class='rounded' href="/donate/<%= params[:id] %>"> Donate </a>
+  <div class='chat-header-ou'>
+    <div class='m-chat-header'>
+      <%= image_tag('person.png', class: 'donation-map-logo chat-logo rounded-circle') %>
+      <div class='chat-header-details'>
+        <p> <%= @receiver.first_name.slice(..15).capitalize %> ...
+        </p>
+        <a class='rounded' href="/donate/<%= params[:id] %>"> Donate </a>
+      </div>
     </div>
   </div>
   <div class='m-in-chat' data-messages-target="messages">
@@ -13,9 +15,9 @@
   </div>
   <%= form_with(model: @message, url: "/chat/#{@receiver.id}", class: "chatform" ) do |f| %>
     <div class="input-group ">
-      <%= f.text_field(:body, {placeholder: 'Message', aria_label:"message", class:"form-control chat-text", require: true })  %>
-      <%# <button class="btn bg-white btn-outline-secondary send-btn" type="submit" id="button-addon2"><i class="fa fa-paper-plane-o" aria-hidden="true"></i> %>
-    </button>
-  </div>
-<% end %>
+      <%= f.text_area(:body, {placeholder: 'Message', aria_label:"message", class:"form-control chat-text",  style:"resize: none", require: true })  %>
+      <button class="btn bg-white btn-outline-secondary send-btn" type="submit" id="button-addon2"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+      </button>
+    </div>
+  <% end %>
 </div>

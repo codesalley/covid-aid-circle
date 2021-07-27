@@ -14,6 +14,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body data-controller="welcome">
+    <%= render 'shared/coffe_modal' %>
     <div class='main-page'>
       <%= render 'shared/navbar' %>
       <%= render partial:  'shared/notice' %>

@@ -14,7 +14,7 @@
       <label class='py-1 new-label'for="floatingLastName">Last Name</label>
     </div>
     <div class="form-floating  mb-1  ">
-      <%= f.text_field(:phone_number,  {  class: 'form-control  px-2 py-1' , placeholder:"Phone Number eg(+1 343 343 4545)" , require: true, pattern: '\d{10}' } ) %>
+      <%= f.number_field(:phone_number,  {  class: 'form-control  px-2 py-1' , placeholder:"Phone Number eg(+1 343 343 4545)" , require: true } ) %>
       <label class='py-1 new-label'for="floatingPhone">Phone Number <small> <em> eg: +1 234 123 1234</em> </small> </label>
     </div>
     <div class="form-floating  mb-1  ">

@@ -101,6 +101,11 @@ input[type="number"] {
 	height: 100%;
 }
 
+.chat-header-ou {
+	width: 100vw;
+	background-color: var(--chat-header);
+}
+
 .sign-up-form h3 {
 	font-size: 1.8rem;
 	font-weight: 600;
@@ -343,7 +348,7 @@ nav {
 	font-weight: 400;
 }
 .current_user small {
-	font-size: 1rem;
+	font-size: 0.7rem;
 	font-style: italic;
 	font-weight: 600;
 	padding: 10px 0;
@@ -358,15 +363,13 @@ nav {
 }
 
 .chat-page {
-	max-width: 500px;
 	width: 100%;
-	margin: auto;
 	height: 100%;
 	position: relative;
 	overflow: hidden;
-	margin-bottom: 5%;
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
 }
 
 .m-in-chat {
@@ -383,11 +386,6 @@ nav {
 .chatform {
 	max-width: 400px;
 	width: 100%;
-	overflow: hidden;
-	flex: 1;
-	bottom: 0;
-	padding: 0 2%;
-	height: 100%;
 }
 
 .send-btn i {
@@ -501,10 +499,17 @@ nav {
 	color: rgba(0, 0, 0, 0.767);
 }
 
+.m-chat-header,
+.m-in-chat,
+.chatform {
+	max-width: 500px;
+	margin: auto;
+	width: 100%;
+}
+
 .m-chat-header {
 	display: flex;
 	flex: 2;
-	width: 100%;
 	align-items: center;
 	background-color: var(--chat-header);
 	padding: 5% 5px;

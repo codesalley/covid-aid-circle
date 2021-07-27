@@ -24,6 +24,17 @@ class HomeController < ApplicationController
     end
   end
 
+  def remove_email
+    current_user.update(email: nil)
+    redirect_to profile_path
+  end
+
+  def add_email
+    email = params[:email]
+    current_user.update(email: email)
+    send_email(email, current_user.first_name)
+  end
+
   private
 
   def donations_params
