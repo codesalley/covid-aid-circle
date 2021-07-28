@@ -2,6 +2,7 @@ import geolocation from "geolocation";
 import loadGoogleMapsApi from "load-google-maps-api";
 import receiver from "../../assets/covidAid/receiver.png";
 import donor from "../../assets/covidAid/donor.png";
+import person from "../../assets/images/person.png";
 import { Controller } from "stimulus";
 
 export default class extends Controller {
@@ -15,7 +16,7 @@ export default class extends Controller {
 				console.log(err);
 			} else {
 				this.allowLocation;
-				this.initMap(location.coords.latitude, location.coords.longitude);
+				this._initMap(location.coords.latitude, location.coords.longitude);
 			}
 		});
 		geolocation.Watcher;
@@ -24,76 +25,69 @@ export default class extends Controller {
 				if (err) {
 					console.log(err);
 				} else {
-					this.initMap(location.coords.latitude, location.coords.longitude);
+					this._initMap(location.coords.latitude, location.coords.longitude);
 				}
 			});
 		});
 	}
-	donate() {
-		console.log("donate");
-	}
-	initMap(lat, log) {
-		loadGoogleMapsApi({ key: process.env["google_api"] })
-			.then((googlemap) => {
-				var directionsService = new google.maps.DirectionsService();
-				var directionsDisplay = new google.maps.DirectionsRenderer();
-				const map = new googlemap.Map(document.getElementById("map"), {
-					center: {
-						lat: lat,
-						lng: log,
-					},
-					zoom: 12,
-				});
-				directionsDisplay.setMap(map);
-				new googlemap.Marker({
-					position: {
-						lat: lat,
-						lng: log,
-					},
+	donate() {}
+	async _initMap(lat, log) {
+		const google = await loadGoogleMapsApi({
+			key: process.env["google_api"],
+			client: process.env["google_api"],
+		});
+
+		const map = new google.Map(document.getElementById("map"), {
+			center: {
+				lat: lat,
+				lng: log,
+			},
+			zoom: 12,
+		});
+		new google.Marker({
+			position: {
+				lat: lat,
+				lng: log,
+			},
+			map: map,
+		});
+
+		if (this.wrapValue.length > 0) {
+			for (let i = 0; i < this.wrapValue.length; i++) {
+				const user = JSON.parse(this.wrapValue[i]);
+				const { lat, lng, donor } = user;
+
+				const marker = new google.Marker({
+					position: new google.LatLng(parseFloat(lat), parseFloat(lng)),
 					map: map,
-					collisionBehavior:
-						google.maps.CollisionBehavior.REQUIRED_AND_HIDES_OPTIONAL,
+					title: donor ? "Donor" : "Receiver",
+					icon: donor ? donor : receiver,
+					collisionBehavior: google.CollisionBehavior.REQUIRED,
 				});
-				if (this.wrapValue.length > 0) {
-					this.wrapValue.map((loc) => {
-						const user = JSON.parse(loc);
-						console.log(user);
-						const userData = `<div> 
-                              Donate to ${user.user}
-                              <a id='donate' href="/donate/${user.id}" class="btn donate-btn btn-outline-primary"> Donate </a>
-                              <a id='donate' href="/chat/${user.id}" class="btn donate-btn btn-outline-primary"> chat </a>
-							  
-                              <div>`;
-						const infowindow = new google.maps.InfoWindow({
-							content: userData,
-						});
-						const marker = new googlemap.Marker({
-							position: {
-								lat: parseFloat(user.lat),
-								lng: parseFloat(user.lng),
-							},
-							map: map,
-							title: user.donor ? "Donor" : "Receiver",
-							icon: user.donor ? donor : receiver,
-							collisionBehavior: google.maps.CollisionBehavior.REQUIRED,
-						});
-						marker.addListener("click", () => {
-							infowindow.open({
-								anchor: marker,
-								map,
-								shouldFocus: false,
-							});
-							const donateBtn = document.querySelector(".donate-btn");
-							console.log(document.getElementById("donate"));
-							donateBtn.addListener("click", () => {
-								console.log("map");
-							});
-						});
+				const userData = `
+								<div class='map-info-card'>
+
+									<img src="${person}" class="donation-map-logo rounded-circle" />
+									<div class='map-in-details'>
+									<p>  Donate to ${user.user} </p>
+									<div class='map-donate-btn'> 
+									<a id='donate' href="/donate/${user.id}" class=" donate-btn rounded "> Donate </a>
+									<a id='donate' href="/chat/${user.id}" class=" donate-chat-btn rounded "> chat </a>
+									</div>
+							  		</div>
+				            	<div>`;
+
+				const infowindow = new google.InfoWindow({
+					content: userData,
+				});
+				marker.addListener("click", () => {
+					infowindow.open({
+						anchor: marker,
+						map,
+						shouldFocus: false,
 					});
-				}
-			})
-			.catch((e) => {
-				console.log(e);
-			});
+				});
+			}
+		}
 	}
 }

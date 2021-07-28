@@ -1,0 +1,14 @@
+<div class='donation-card shadow rounded p-2'>
+  <% if donation.confirmed %>
+    <p class='donation-status rounded-circle shadow p-2 d-confirm'> Confirm </p>
+  <% else %>
+    <p class='donation-status rounded-circle text-danger shadow p-2 d-pending'> Pending </p>
+  <% end %>
+  <%= link_to "/chat/#{get_donation_receiver(donation)}", class: 'donation-card-info' do %>
+    <p> You Donated <%= donation.item.slice(..10) %> <%= donation.item.size > 10 ? '...' : '' %>  </p>
+    <small>Amount $ <%= donation.amount || 0.00 %> </small>
+  <% end %>
+  <% if !donation.confirmed && current_user.id == donation.receiver_id %>
+    <button> Confirm </button>
+  <% end %>
+</div>

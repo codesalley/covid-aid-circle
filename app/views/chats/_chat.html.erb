@@ -1,0 +1,11 @@
+<% if chat.messages.length > 0 %>
+  <% @sender = User.find(chat.sender_id)  %>
+  <%= link_to "/chat/#{get_chat(chat.title)}", class:'message-card' do %>
+    <%= image_tag('person.png', class: 'msg-logo rounded-circle') %>
+    <div class='msg-body'>
+      <p> <%= @sender.first_name.capitalize   %> <%= @sender.last_name.capitalize %> </p>
+      <small> <em> <%= chat.messages.last.body.slice(..30) %> ... </em> </small>
+    </div>
+    <p class='time'> <%= format_time(chat.updated_at) %> </p>
+  <% end %>
+<% end %>

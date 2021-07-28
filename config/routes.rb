@@ -14,14 +14,21 @@ Rails.application.routes.draw do
 
   # user profile page
   get "/profile", to: "home#user_profile"
+  post "profile", to: "home#add_email"
+  delete "profile", to: "home#remove_email"
 
   # methods to handle donation
   get "/donate/:id", to: "home#donations"
   post "/donate", to: "home#confirm_donations"
 
   # chat methods
+  get "/chat", to: "messages#inbox"
   get "/chat/:id", to: "messages#chat"
   post "/chat/:id", to: "messages#send_message"
+
+  post "/bank", to: "home#add_bank"
+
+  get "home", to: "home#landing_page"
 
   # welocme page
   root "home#index"

@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+  *= require font-awesome
  */
 /* 
 body {
@@ -19,28 +20,54 @@ body {
 	height: 100vh;
 } */
 
+* {
+	font-family: "Lato", sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	opacity: 0.99;
+	filter: blur(0.99);
+	filter: contrast(0.99);
+}
+
 :root {
 	--auth-btn-color: #10650a;
+	--chat-header: #74b973;
+	--primary-text: #1e2022;
+	--sec-text: #77838f;
+}
+
+.main-page {
+	background-color: white;
+	height: 100vh;
+	width: 100vw;
+}
+
+.map-section {
+	height: 60%;
+	position: relative;
+}
+
+.main-page-index {
+	width: 100%;
+	height: 100%;
 }
 
 #map {
 	width: 100%;
-	height: 500px;
+
+	height: 100%;
 }
 
 .user-avatar {
-	max-width: 100px;
+	max-width: 150px;
 	width: 100%;
-}
-
-.form-floating > .form-control,
-.form-floating > .form-select {
-	height: 2.5rem;
-	padding: 0;
+	background-color: cornsilk;
+	padding: 20px;
 }
 
 .new-label {
-	font-size: 0.8rem;
+	font-size: 0.9rem;
 }
 
 .signup-btn {
@@ -62,28 +89,503 @@ input[type="number"] {
 /* signup form  */
 
 .sign-up-form {
-	max-width: 300px;
 	width: 100%;
+	max-width: 450px;
+	margin: auto;
 	padding: 5%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	margin: auto;
+	align-content: flex-end;
+	height: 100%;
+}
+
+.chat-header-ou {
+	width: 100vw;
+	background-color: var(--chat-header);
+}
+
+.sign-up-form h3 {
+	font-size: 1.8rem;
+	font-weight: 600;
 }
 
 .sign-up-form form {
 	width: 100%;
-	height: 100%;
 }
 
-.signup-btn {
+.sign-up-form input {
+	max-height: 50px;
+}
+
+.otp-form {
+	max-width: 400px;
+	margin: auto;
+}
+
+.signup-btn,
+.otp-btn {
 	background-color: var(--auth-btn-color);
+}
+
+.otp-welcome {
+	display: grid;
+	place-content: center;
+}
+
+.otp-heading {
+	font-size: 1rem;
+	text-align: center;
+}
+
+.otp-btn {
+	color: white;
+}
+
+.chat-text {
+	font-size: 0.6rem;
 }
 
 .active-link {
 	text-decoration: none;
 	color: rgba(0, 0, 0, 0.781);
+	font-size: 1rem;
+	font-weight: 600;
+	padding: 10px 0;
+}
+
+.m-donation-page {
+	overflow: hidden;
+	width: 100%;
+	max-width: 450px;
+	height: 100%;
+	margin: auto;
+	padding-top: 20%;
+}
+
+.donation-card {
+	display: flex;
+	gap: 5%;
+	width: 100%;
+	max-width: 450px;
+	align-items: center;
+	max-height: 90px;
+	text-decoration: none;
+}
+.donation-card p {
+	margin: 0;
+	text-decoration: none;
+	color: rgba(0, 0, 0, 0.733);
+}
+
+.donation-card-info {
+	display: flex;
+	flex-direction: column;
+	text-decoration: none;
+}
+.donation-card-info small {
+	color: gray;
+}
+
+.donation-form {
+	max-width: 450px;
+	width: 100%;
+}
+.donation-form small {
+	color: gray;
+}
+
+.donation-form .form-floating {
+	width: 100%;
+}
+
+.donation-user {
+	font-size: 0.8rem;
+	text-align: center;
+}
+
+.dontion-heading {
+	font-size: 1.5rem;
+	font-weight: 700;
+}
+
+/* welcome page style  */
+
+nav {
+	background-color: var(--chat-header);
+}
+
+.inner-nav {
+	display: grid;
+	height: 30%;
+	grid-template-columns: repeat(auto-fill, minmax(auto, 48%));
+	padding: 20px 0;
+	justify-content: space-between;
+	gap: 2%;
+}
+
+.nav-card {
+	width: 100%;
+	height: 120px;
+	border-radius: 10px;
+	text-decoration: none;
+}
+.nav-card:nth-child(1) {
+	background-color: #ff9500;
+}
+.nav-card:nth-child(2) {
+	background-color: #4ce5b1;
+}
+.nav-card:nth-child(3) {
+	background-color: #ff2d55;
+}
+.nav-card:nth-child(4) {
+	background-color: #219aff;
+}
+
+.nav-card div p {
+	text-decoration: none;
+	color: white;
+	font-size: 1rem;
+}
+.nav-card div {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	padding: 2% 10%;
+}
+.nav-card div i {
+	font-size: 1.5rem;
+	color: white;
+}
+
+.nav-card p {
+	text-align: center;
+	font-size: 1.4rem;
+	color: white;
+	font-weight: 600;
+}
+
+/* inbox styling  */
+
+.message-page {
+	width: 100%;
+	height: 100%;
+}
+
+.messages-inbox {
+	padding: 2% 5%;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	height: 100%;
+}
+
+.message-card {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	text-decoration: none;
+}
+
+.msg-logo {
+	width: 100%;
+	height: 100%;
+	display: inline-block;
+	overflow: hidden;
+	background-color: khaki;
+	flex: 1;
+}
+
+.msg-body {
+	line-height: 12px;
+	flex: 5;
+	align-self: center;
+	padding-left: 5%;
+}
+
+.msg-body p {
+	font-size: 1rem;
+	color: var(--primary-text);
+	margin: 0;
+}
+.msg-body small {
+	font-size: 0.6rem;
+	color: var(--sec-text);
+	overflow: hidden;
+}
+
+.time {
+	font-size: 0.5rem;
+	align-self: flex-end;
+	margin: 0;
+	color: var(--sec-text);
+	flex: 1;
+}
+
+/* in chat styling   */
+
+.m-card-mob {
+	width: 75%;
+	display: flex;
+	border: 1px solid rgba(128, 128, 128, 0.13);
+	border-radius: 10px;
+	padding: 5px;
+	margin-bottom: 5px;
+	line-height: 12px;
+	position: relative;
+}
+
+.current_user {
+	width: 100%;
+	text-align: right;
+}
+.current_user p {
+	margin-bottom: 0;
+	font-size: 0.9rem;
+	line-height: 18px;
+	font-weight: 400;
+}
+.current_user small {
+	font-size: 0.7rem;
+	font-style: italic;
+	font-weight: 600;
+	padding: 10px 0;
+}
+.receive_user small {
+	font-size: 0.7rem;
+	font-style: italic;
+	font-weight: 600;
+	padding: 10px 0;
+}
+
+.receive_user p {
+	margin-bottom: 0;
+	font-size: 0.9rem;
+	line-height: 18px;
+	font-weight: 400;
+}
+
+.chat-page {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.welcome-nav {
+	bottom: 5%;
+	left: 50%;
+}
+
+.m-in-chat {
+	flex: 15;
+	padding-top: 10px;
+	overflow-y: scroll;
+	height: 100%;
+	padding: 0 5%;
+	display: flex;
+	flex-direction: column;
+	padding: 0 2%;
+}
+
+.chatform {
+	max-width: 400px;
+	width: 100%;
+}
+
+.send-btn i {
+	font-size: 1.2rem;
+	color: var(--auth-btn-color);
+}
+
+.current-user-msg {
+	align-self: flex-end;
+	background-color: var(--chat-header);
+	color: white;
+	padding: 5px 10px;
+}
+
+.donation-map-logo {
+	width: 60px;
+	height: 60px;
+	object-fit: cover;
+}
+
+.map-info-card {
+	display: flex;
+}
+
+.map-in-details {
+	display: flex;
+	flex-direction: column;
+}
+
+.donate-btn,
+.donate-chat-btn {
+	text-decoration: none;
+	padding: 5px 10px;
+	color: white;
+}
+.donate-btn:hover,
+.donate-chat-btn:hover {
+	text-decoration: none;
+	padding: 5px 10px;
+	color: white;
+}
+
+.donate-btn {
+	background-color: var(--auth-btn-color);
+}
+
+.donate-chat-btn {
+	background-color: #ff9500;
+}
+
+.map-donate-btn {
+	display: flex;
+	gap: 10px;
+}
+
+.coffe-cup {
+	left: 70%;
+	max-width: 40px;
+	padding: 10px 5px;
+	background-color: white;
+	border-radius: 0 0 10px 10px;
+}
+.coffe-cup i {
+	color: rgba(0, 0, 0, 0.74);
+	font-size: 2rem;
+}
+
+/* profile final touch  */
+
+.p-username {
+	font-weight: 700;
+}
+
+.p-user-address {
+	font-size: 0.8rem;
+	color: gray;
+}
+
+.donation-status {
+	display: grid;
+	place-content: center;
+	background-color: rgba(240, 28, 28, 0.288);
+	height: 60px;
 	font-size: 0.8rem;
 	font-weight: 600;
+}
+
+.donations-list {
+	padding: 5% 5% 0 5%;
+}
+.donations-list .list {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	gap: 0;
+}
+
+.no-donations-list {
+	display: grid;
+	place-content: center;
+}
+.no-donations-list i {
+	font-size: 5rem;
+	text-align: center;
+	color: gray;
+	opacity: 0.7;
+}
+
+.donation-h {
+	font-weight: 700;
+	color: rgba(0, 0, 0, 0.767);
+}
+
+.m-chat-header,
+.m-in-chat,
+.chatform {
+	max-width: 500px;
+	margin: auto;
+	width: 100%;
+}
+
+.m-chat-header {
+	display: flex;
+	flex: 2;
+	align-items: center;
+	background-color: var(--chat-header);
+	padding: 5% 5px;
+	color: white;
+	gap: 5%;
+}
+
+.chat-header-details p {
+	margin: 0;
+	font-weight: 600;
+	font-size: 1.2rem;
+}
+
+.chat-logo {
+	background-color: wheat;
+}
+
+.chat-header-details {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.chat-header-details a {
+	text-decoration: none;
+	background-color: white;
+	padding: 3px 5px;
+	color: var(--chat-header);
+	justify-self: flex-end;
+	max-width: 70px;
+	text-align: center;
+}
+
+/* responsive design  */
+
+@media screen and (min-width: 866px) {
+	.main-page-index {
+		display: flex;
+		max-width: 1400px;
+		width: 100%;
+		margin: auto;
+		overflow: hidden;
+	}
+	.map-section {
+		flex: 9;
+	}
+	.inner-nav {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		padding: 0 2%;
+		justify-content: center;
+		height: 100%;
+	}
+	.nav-card p {
+		font-size: 1rem;
+	}
+	.nav-card div p {
+		font-size: 0.8rem;
+	}
+	#map {
+		width: 100%;
+		height: 100%;
+	}
+	.map-section {
+		width: 100%;
+		height: 100%;
+	}
 }

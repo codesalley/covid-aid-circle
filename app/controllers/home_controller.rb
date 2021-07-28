@@ -1,24 +1,28 @@
 class HomeController < ApplicationController
-  before_action :authenticate_user
+  before_action :authenticate_user, except: :landing_page
+  before_action :authenticate_account, except: :landing_page
 
   def index
-    @logData = []
-    User.all.map do |user|
-      if user.codinates.size > 0
-        @logData << JSON.generate({
-          lat: user.codinates[0],
-          lng: user.codinates[1],
-          donor: user.donor,
-          user: user.first_name + " " + user.last_name,
-          id: user.id,
-        }) unless user.codinates.nil?
-      end
+    @logData = get_codinates
+  end
+
+  def landing_page
+    @logData = newCodinates
+  end
+
+  def add_bank
+    bank = Bank.create(user_id: current_user.id, account_number: params[:account_number], bank_name: params[:bank_name], user_name: params[:user_name])
+
+    if bank.save
+      current_user.update(activated: true)
+      redirect_to profile_path, notice: "account Added"
+    else
+      redirect_to root_path, alert: "Try again later"
     end
   end
 
   def user_profile
     @donations = current_user.donations
-    p @donations
   end
 
   def donations
@@ -33,6 +37,17 @@ class HomeController < ApplicationController
     else
       redirect_to profile_path, alert: "Try again later"
     end
+  end
+
+  def remove_email
+    current_user.update(email: nil)
+    redirect_to profile_path
+  end
+
+  def add_email
+    email = params[:email]
+    current_user.update(email: email)
+    send_email(email, current_user.first_name)
   end
 
   private
