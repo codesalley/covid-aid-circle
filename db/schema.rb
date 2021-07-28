@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_25_112813) do
+ActiveRecord::Schema.define(version: 2021_07_28_085148) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "banks", force: :cascade do |t|
+    t.string "bank_name"
+    t.string "user_name"
+    t.string "account_number"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_banks_on_user_id"
+  end
 
   create_table "chats", force: :cascade do |t|
     t.string "title"
@@ -64,5 +74,6 @@ ActiveRecord::Schema.define(version: 2021_07_25_112813) do
     t.text "codinates", default: [], array: true
   end
 
+  add_foreign_key "banks", "users"
   add_foreign_key "messages", "chats"
 end

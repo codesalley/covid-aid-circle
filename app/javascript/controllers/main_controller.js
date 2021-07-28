@@ -30,15 +30,13 @@ export default class extends Controller {
 			});
 		});
 	}
-	donate() {
-		console.log("donate");
-	}
+	donate() {}
 	async _initMap(lat, log) {
 		const google = await loadGoogleMapsApi({
 			key: process.env["google_api"],
 			client: process.env["google_api"],
 		});
-		console.log(google);
+
 		const map = new google.Map(document.getElementById("map"), {
 			center: {
 				lat: lat,
@@ -58,7 +56,6 @@ export default class extends Controller {
 			for (let i = 0; i < this.wrapValue.length; i++) {
 				const user = JSON.parse(this.wrapValue[i]);
 				const { lat, lng, donor } = user;
-				console.log(user);
 
 				const marker = new google.Marker({
 					position: new google.LatLng(parseFloat(lat), parseFloat(lng)),

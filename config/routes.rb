@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   get "/chat/:id", to: "messages#chat"
   post "/chat/:id", to: "messages#send_message"
 
+  post "/bank", to: "home#add_bank"
+
   get "home", to: "home#landing_page"
 
   # welocme page

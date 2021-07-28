@@ -1,51 +1,25 @@
-<div data-controller="payment"  data-payment-amount="10"  class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" data-bs-focus="true" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Buy me Coffee</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="w-100 gap-4 py-4 coffe-cup-balance d-flex justify-content-center align-items-center ">
-          <button class='btn px-3  btn-outline-danger rounded-circle' data-action="payment#minus"> - </button>
-          <i class="fa fa-coffee modal-coffe fs-1" aria-hidden="true"></i>
-          <button class='btn px-3 btn-outline-success rounded-circle'   data-action="payment#plus"> + </button>
+      <%= form_with(url: bank_path) do |f| %>
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Add Bank Account</h5>
         </div>
-        <div class="mb-3">
-          <input type="text" class="form-control" id="name" placeholder="Full Name" required/>
+        <div class="modal-body">
+          <div class="mb-3">
+            <%= f.text_field :user_name, class: 'form-control ',  placeholder:"Full Name", require: true  %>
+          </div>
+          <div class="mb-3">
+            <%= f.text_field :bank_name, class: 'form-control ',  placeholder:"Bank Name", require: true  %>
+          </div>
+          <div class="mb-3">
+            <%= f.number_field :account_number , class: 'form-control',placeholder:"Bank Account Number", require: true  %>
+          </div>
         </div>
-        <div class="mb-3">
-          <input type="number" class="form-control" id="cardNumber" placeholder="Card Number" required/>
+        <div class="modal-footer">
+          <%= f.submit 'AddBank', class: 'btn btn-primary' %>
         </div>
-        <div class="input-group mb-3">
-          <input type="number" id="e-date" class="form-control" pattern="\d{4}" max="4" title="eg: 0222" placeholder="Expiration date" aria-label="Expiration date" required/>
-          <span class="input-group-text"> ~~ </span>
-          <input type="number" class="form-control" id="cardpin" placeholder="CVV" title="eg: 233"  pattern="\d{4}" required />
-        </div>
-        <div class="input-group mb-3">
-          <select id="countrySelect" class="form-select" aria-label="Default select example" >
-          </select>
-          <span class="input-group-text"> ~~ </span>
-          <input type="text" class="form-control" id="state" placeholder="State" title="eg: NY" pattern="\w" required />
-        </div>
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" id="cityname" title="City Name" placeholder="City Name" aria-label="City Name" required/>
-          <span class="input-group-text"> ~~ </span>
-          <input type="text" class="form-control" id="zipcode" placeholder="Zip Code" title="eg: 233"  required />
-        </div>
-        <div class="mb-3">
-          <input type="text" class="form-control" id="street" placeholder="Street Address" required/>
-        </div>
-        <div class="input-group">
-          <input type="number" id="amount" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
-          <span class="input-group-text">$</span>
-          <span id="d-amount" data-payment-target="output" data-payment-target="amount" class="input-group-text">0.00</span>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Send</button>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>

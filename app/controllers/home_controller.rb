@@ -10,6 +10,17 @@ class HomeController < ApplicationController
     @logData = newCodinates
   end
 
+  def add_bank
+    bank = Bank.create(user_id: current_user.id, account_number: params[:account_number], bank_name: params[:bank_name], user_name: params[:user_name])
+
+    if bank.save
+      current_user.update(activated: true)
+      redirect_to profile_path, notice: "account Added"
+    else
+      redirect_to root_path, alert: "Try again later"
+    end
+  end
+
   def user_profile
     @donations = current_user.donations
   end
